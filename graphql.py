@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from repo.redis import SvRedis
+from redis_py.redis import Redis
 from typing import Literal, List, Generator
 import hashlib
 import json
@@ -9,7 +9,7 @@ import os
 import requests
 
 TIMEOUT = int(os.getenv('CACHE_TIMEOUT', '60'))  # seconds
-SVREDIS = SvRedis(db=0).conn
+SVREDIS = Redis(db=0).conn
 logger = logging.getLogger('custom.logger')
 
 @ dataclass
